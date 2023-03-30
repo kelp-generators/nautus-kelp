@@ -5,8 +5,8 @@ const generator = async (prompts, validationRegExes, about, dir, cmd, mergeScrip
     const axios = require('axios')
     const path = require('path')
 
-    const generatorName = await prompt('Generator name (without nautus-)', '', identifier, false, async (input) => {
-        // Check if npm module name is available
+    const generatorName = await prompt('Genaerator name (without nautus-)', '', identifier, false, async (input) => {
+        // Check if npm module name is availble
         try {
             const res = await axios.get(`https://registry.npmjs.org/${encodeURIComponent(input)}`)
             return res.data && res.data.error && res.data.error === 'Not found'
@@ -65,7 +65,7 @@ const generator = async (prompts, validationRegExes, about, dir, cmd, mergeScrip
 
     // @Run.js
     removeDefault('Run') // Removes the default error message
-    mergeScript('Run', `exit(await spawn('nautus', ['kelp-try', "${dir}"]))`)
+    mergeScript('Run', `exit(await spawn('nautus', ['kelp-try', "${dir.replace(/\\/g, '/')}"]))`)
 
     // @Release.js
     removeDefault('Release')
