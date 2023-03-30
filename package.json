@@ -1,6 +1,6 @@
 {
   "name": "nautus-kelp",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Kelp generator for generating a kelp generator 🤯",
   "main": "main.js",
   "scripts": {
