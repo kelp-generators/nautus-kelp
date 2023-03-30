@@ -1,11 +1,11 @@
-const generator = async (prompts, validationRegExes, about, dir, cmd, mergeScript, removeDefault, chalk, fs) => {
+#const generator = async (prompts, validationRegExes, about, dir, cmd, mergeScript, removeDefault, chalk, fs) => {
     const { prompt, confirm, numeral, toggle, select, multiSelect } = prompts
     const { identifier, repository} = validationRegExes
 
     const axios = require('axios')
     const path = require('path')
 
-    const generatorName = await prompt('Genarator name (without nautus-)', '', identifier, false, async (input) => {
+    const generatorName = await prompt('Generator name (without nautus-)', '', identifier, false, async (input) => {
         // Check if npm module name is availble
         try {
             const res = await axios.get(`https://registry.npmjs.org/${encodeURIComponent(input)}`)
