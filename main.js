@@ -1,4 +1,4 @@
-#const generator = async (prompts, validationRegExes, about, dir, cmd, mergeScript, removeDefault, chalk, fs) => {
+const generator = async (prompts, validationRegExes, about, dir, cmd, mergeScript, removeDefault, chalk, fs) => {
     const { prompt, confirm, numeral, toggle, select, multiSelect } = prompts
     const { identifier, repository} = validationRegExes
 
