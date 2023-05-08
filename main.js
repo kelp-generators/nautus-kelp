@@ -2,18 +2,9 @@ const generator = async (prompts, validationRegExes, about, dir, cmd, mergeScrip
     const { prompt, confirm, numeral, toggle, select, multiSelect } = prompts
     const { identifier, repository} = validationRegExes
 
-    const axios = require('axios')
     const path = require('path')
 
-    const generatorName = await prompt('Generator name (without nautus-)', '', identifier, false, async (input) => {
-        // Check if npm module name is availble
-        try {
-            const res = await axios.get(`https://registry.npmjs.org/${encodeURIComponent(input)}`)
-            return res.data && res.data.error && res.data.error === 'Not found'
-        } catch {
-            return false
-        }
-    })
+    const generatorName = await prompt('Generator name (without nautus-)', '', identifier, false)
     const description = await prompt('Description', 'A kelp generator for ' + generatorName, null, true)
     if (!about.githubUsername) about.githubUsername = await prompt('Username')
     const explanations = await confirm('Would you like explanation comments?')
